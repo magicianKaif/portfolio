@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaif Shaikh | Cybersecurity Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-main: #000000;
+            --text-dark-grey: #333333;
+            --text-accent: #888888;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding-top: 60px; /* Space for the fixed navbar */
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-main);
+            font-weight: 800;
+        }
+
+        p {
+            color: var(--text-dark-grey);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+        }
+
+        /* --- NEW: NAVIGATION BAR (SHORTCUTS) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Layout & Containers */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--text-main);
+            margin: 0.5rem auto 0;
+        }
+
+        .bg-sec {
+            background-color: var(--bg-secondary);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .profile-img-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: var(--text-accent); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-subtitle-small {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--text-accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* DOMINANT NAME STYLING */
+        .hero-title {
+            font-size: 4.8rem;
+            font-weight: 900;
+            letter-spacing: -2.5px;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle-medium {
+            font-size: 1.2rem;
+            color: var(--text-accent);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-dark-grey);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Arsenal Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            background-color: #eaeaea; 
+        }
+
+        .skill-card i {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .skill-card span {
+            font-weight: 600;
+            color: var(--text-dark-grey);
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background: var(--bg-secondary);
+            padding: 3rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--text-main);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            background-color: #eaeaea; 
+        }
+
+        .experience-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-meta {
+            font-size: 0.9rem;
+            color: var(--text-accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .exp-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* --- UPDATED: Interests Section (Black Hover Effect) --- */
+        .interests-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .interests-list li {
+            padding: 1.2rem;
+            background: var(--bg-primary);
+            border-left: 2px solid var(--text-accent);
+            font-size: 1.1rem;
+            color: var(--text-dark-grey);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .interests-list li i {
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+        }
+
+        .interests-list li:hover {
+            border-left-color: var(--text-main);
+            transform: translateX(5px);
+            background-color: var(--text-main); /* Changes BG to Pure Black */
+            color: var(--bg-primary); /* Changes text to White */
+        }
+
+        .interests-list li:hover i {
+            color: var(--bg-primary); /* Changes Icon to White */
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            background-color: #eaeaea; 
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-desc {
+            color: var(--text-dark-grey);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            color: var(--text-accent);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            background: var(--text-main);
+            color: var(--bg-primary);
+        }
+
+        .contact-card:hover i, .contact-card:hover span {
+            color: var(--bg-primary);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card span {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark-grey);
+            transition: var(--transition-smooth);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-secondary);
+            color: var(--text-accent);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title { 
+                font-size: 3.2rem; 
+                letter-spacing: -1.5px;
+            }
+            .container { padding: 4rem 1.5rem; }
+            .experience-card { padding: 2rem; }
+            .exp-meta { flex-direction: column; gap: 0.5rem; }
+            
+            /* Mobile Navbar adjustments */
+            .nav-links { gap: 0.8rem; }
+            .nav-links a { font-size: 0.75rem; }
+            .nav-logo { display: none; } /* Hides logo on small screens to fit links */
+            .nav-container { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar reveal">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">SLIME.</a>
+            <div class="nav-links">
+                <a href="#arsenal">Arsenal</a>
+                <a href="#experience">Experience</a>
+                <a href="#interests">Vision</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content reveal">
+            <div class="profile-img-container">
+                <img src="ppf.jpg?text=KS" alt="Kaif Shaikh" class="profile-img">
+            </div>
+            <p class="hero-subtitle-small">SLIME</p>
+            <h1 class="hero-title">KAIF SHAIKH</h1>
+            <h2 class="hero-subtitle-medium">also known as Magician Slime</h2>
+            <p class="hero-desc">
+                Cybersecurity enthusiast specializing in penetration testing, OSINT investigations, and offensive security research. Passionate about digital defense, threat intelligence, and building secure systems.
+            </p>
+        </div>
+    </section>
+
+    <section id="arsenal" class="bg-sec">
+        <div class="container">
+            <h2 class="section-title reveal">Arsenal</h2>
+            <div class="skills-grid reveal">
+                <div class="skill-card"><i class="fa-brands fa-linux"></i><span>Kali Linux</span></div>
+                <div class="skill-card"><i class="fa-brands fa-windows"></i><span>Windows Security</span></div>
+                <div class="skill-card"><i class="fa-solid fa-network-wired"></i><span>Nmap</span></div>
+                <div class="skill-card"><i class="fa-solid fa-bug"></i><span>Exploit-DB</span></div>
+                <div class="skill-card"><i class="fa-solid fa-magnifying-glass"></i><span>OSINT Investigation</span></div>
+                <div class="skill-card"><i class="fa-solid fa-globe"></i><span>Network Reconnaissance</span></div>
+                <div class="skill-card"><i class="fa-solid fa-shield-halved"></i><span>Vulnerability Analysis</span></div>
+                <div class="skill-card"><i class="fa-solid fa-user-secret"></i><span>Threat Intelligence</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title reveal">Experience</h2>
+            <div class="experience-card reveal-left">
+                <h3>Cybersecurity Research & Investigation</h3>
+                <div class="exp-meta">
+                    <span><i class="fa-regular fa-clock"></i> 2 Years Experience</span>
+                    <span><i class="fa-solid fa-users"></i> Former member of n0ps Team</span>
+                </div>
+                <p>Worked in planning attacks, identifying, tracking, and exposing scammers and online predators through OSINT and cybersecurity investigation techniques. Collaborated with the FBI and targeted local authorities to ensure digital safety and threat mitigation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="bg-sec">
+        <div class="container">
+            <h2 class="section-title reveal">Interests & Vision</h2>
+            <ul class="interests-list reveal">
+                <li><i class="fa-solid fa-fingerprint"></i> Criminology and cybercrime psychology</li>
+                <li><i class="fa-solid fa-skull-crossbones"></i> Offensive security and GRC</li>
+                <li><i class="fa-solid fa-eye"></i> Threat intelligence and digital investigations</li>
+                <li><i class="fa-solid fa-building-shield"></i> Future goal: owning and operating a professional cybersecurity firm</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title reveal">Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card reveal">
+                    <div class="project-title">
+                        Arysha Ransomware
+                        <i class="fa-solid fa-lock" style="color: var(--text-accent);"></i>
+                    </div>
+                    <p class="project-desc">Security research project focused on ransomware behavior and execution patterns in controlled environments.</p>
+                    <a href="https://github.com/magicianKaif/Arysha-Ransomware" target="_blank" class="project-link">
+                        View Repository <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-title">
+                        Control RAT Telegram
+                        <i class="fa-brands fa-telegram" style="color: var(--text-accent);"></i>
+                    </div>
+                    <p class="project-desc">Remote administration tool integrated with Telegram, utilizing the platform as a secure Command and Control (C2) server.</p>
+                    <a href="https://github.com/magicianKaif/control" target="_blank" class="project-link">
+                        View Repository <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-sec">
+        <div class="container">
+            <h2 class="section-title reveal">Contact</h2>
+            <div class="contact-grid reveal">
+                
+                <a href="https://instagram.com/magicianslime" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+
+                <a href="https://t.me/magician_slime" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/magicianslime/" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+
+                <a href="https://github.com/magicianKaif" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+
+                <a href="tel:+919004300308" class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 9004300308</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="reveal">
+        <p>© 2026 Kaif Shaikh — Magician Slime</p>
+        <p>Cybersecurity Portfolio</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .navbar');
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+            
+            setTimeout(() => {
+                document.querySelector('.hero-content').classList.add('active');
+                document.querySelector('.navbar').classList.add('active');
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
